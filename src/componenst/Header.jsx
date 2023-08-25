@@ -1,12 +1,7 @@
-function Header() {
-  return (
-    <div>
-      <ul>
-        <li>
-          <h1>Peliculas mas</h1>
-        </li>
-      </ul>
-    </div>
-  );
-}
+import React from "react";
+
+const Header = () => {
+  return <h1>TAREAS</h1>;
+};
+
 export default Header;

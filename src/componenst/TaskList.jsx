@@ -1,20 +1,23 @@
-export const TaskList = (props) => {
-  const { name, Click1, Click2 } = props;
-  const clickAqui = () => {
-    console.log(name + "Terminado");
-    Click1(name);
-  };
-  const Incompleto = () => {
-    console.log(name + " Sin Terminar");
-    Click2(name);
-  };
+import React from "react";
+import Task from "./Task";
+
+function TaskList({ tasks, onToggleComplete, onRemoveTask }) {
   return (
-    <ul>
-      <article>
-        <h3>{name}</h3>
-        <button onClick={clickAqui}>Completado</button>
-        <button onClick={Incompleto}>Sin completar</button>
-      </article>
-    </ul>
+    <div>
+      <h4>Lista de Tareas</h4>
+      <h6>*Tareas completadas*</h6>
+      <ul>
+        {tasks.map((task) => (
+          <Task
+            key={task.id}
+            task={task}
+            onToggleComplete={onToggleComplete}
+            onRemoveTask={onRemoveTask}
+          />
+        ))}
+      </ul>
+    </div>
   );
-};
+}
+
+export default TaskList;

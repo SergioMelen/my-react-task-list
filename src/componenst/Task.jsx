@@ -1,22 +1,34 @@
-import { TaskList } from "./TaskList";
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import "../App.css";
 
-export const Task = (props) => {
-  const { list } = props;
-  const hacerClick = (A1) => {
-    console.log("click en terminado " + A1);
+function Task({ task, onToggleComplete, onRemoveTask }) {
+  const handleToggleComplete = () => {
+    onToggleComplete(task.id);
   };
-  const hacerClick2 = (A2) => {
-    console.log("click en sin terminar " + A2);
+
+  const handleRemoveTask = () => {
+    onRemoveTask(task.id);
   };
+
   return (
-    <ul>
-      {list.map((TiempoDePelicula) => (
-        <TaskList
-          name={TiempoDePelicula.name}
-          Click1={hacerClick}
-          Click2={hacerClick2}
-        />
-      ))}
-    </ul>
+    <li>
+      <input
+        type="checkbox"
+        checked={task.completed}
+        onChange={handleToggleComplete}
+      />
+      <span
+        style={{ textDecoration: task.completed ? "line-through" : "none" }}
+      >
+        {task.name}
+      </span>
+      <button className="remove-button" onClick={handleRemoveTask}>
+        <FontAwesomeIcon icon={faTrashAlt} />
+      </button>
+    </li>
   );
-};
+}
+
+export default Task;
