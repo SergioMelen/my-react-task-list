@@ -1,22 +1,54 @@
-import { TaskList } from "./TaskList";
+import { useContext } from "react";
+import { useForm } from "react-hook-form";
+import Context from "../contexts/context";
 
-export const Task = (props) => {
-  const { list } = props;
-  const hacerClick = (A1) => {
-    console.log("click en terminado " + A1);
-  };
-  const hacerClick2 = (A2) => {
-    console.log("click en sin terminar " + A2);
-  };
-  return (
-    <ul>
-      {list.map((TiempoDePelicula) => (
-        <TaskList
-          name={TiempoDePelicula.name}
-          Click1={hacerClick}
-          Click2={hacerClick2}
-        />
-      ))}
-    </ul>
-  );
-};
+
+function Task () {
+  
+  const { register, handleSubmit, formState: { errors }, reset,  } = useForm();
+
+    const onSubmit = (data) => {
+       crearTarea(data.newTask, data.description);
+       reset();
+    }
+
+    const { crearTarea } = useContext(Context);
+    const renderError = (type, message) => (
+      errors[type] && <p className="validacion">{message}</p>
+    );
+    return(    
+        <form 
+        className="container-form"
+        onSubmit={handleSubmit(onSubmit)}>
+            <label className="subtitulo">Ingresa una Tarea</label>       
+            <input 
+                {...register('newTask', {
+                  required: true,
+                  maxLength: 30,
+                  minLength: 3
+                })}
+                type="text" 
+                placeholder="Ej: Entregar el proyecto..." 
+                className="input-tittle"
+                onKeyPress={(e) => {
+                    e.key = 'Enter'
+                }}/> 
+            {renderError('newTask', 'El campo no puede estar vacío')}
+      {renderError('newTask', 'El nombre debe contener al menos 3 caracteres')}
+    
+            <label className="label-descripcion">Descripcion (opcional)</label>
+            <textarea
+                {...register('description', {
+                  maxLength: 100,
+                })}
+                placeholder=" Máximo 100 caracteres. . . "
+                className="text-area"
+
+            />
+            <div className="contenedor-agregar">
+                <button name="agregar" type="submit" className="agregar">Agregar</button>
+            </div>         
+        </form>        
+    )};
+    
+export default Task

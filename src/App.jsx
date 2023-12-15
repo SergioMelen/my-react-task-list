@@ -1,20 +1,21 @@
-import Header from "./componenst/Header";
-import { Task } from "./componenst/Task";
-import "./App.css";
+import './App.css'
+import Task from './componenst/Task'
+import Header from './componenst/Header'
+import TaskList from './componenst/TaskList'
+import ContextProvider from './contexts/contextProvider'
 
 function App() {
-  const estrenos = [
-    { name: "Comedia" },
-    { name: "Romance" },
-    { name: "Accion" },
-  ];
+
 
   return (
-    <div className="App">
-      <Header />
-      <Task list={estrenos} />
+    <div className='container-app'>
+    <ContextProvider>
+    <Header/>
+    <Task  />
+    <TaskList />
+    </ContextProvider>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
