@@ -6,14 +6,14 @@ import SobreNosotros from './newcomponenst/SobreNosotros';
 import Tareas from './newcomponenst/Tareas';
 import Menu from './newcomponenst/Menu';
 import { Box, ChakraProvider, extendTheme } from '@chakra-ui/react';
+import ButtonTheme from './componenst/ButtonTheme';
 
-// Personaliza el tema de Chakra UI
 const theme = extendTheme({
   colors: {
-    primary: '#3498db', // Cambia el color principal a un tono de azul
-    secondary: '#2ecc71', // Cambia el color secundario a un tono de verde
-    background: '#ecf0f1', // Cambia el color de fondo a un tono más claro
-    text: '#34495e', // Cambia el color del texto a un tono más oscuro
+    primary: '#3498db', 
+    secondary: '#2ecc71', 
+    background: '#ecf0f1', 
+    text: '#34495e', 
   },
 });
 
@@ -22,6 +22,7 @@ function App() {
     <Box w='900px'>
       <BrowserRouter>
         <ContextProvider>
+        <ButtonTheme />
           <ChakraProvider theme={theme}>
             <Menu />
             <Routes>

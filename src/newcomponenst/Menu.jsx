@@ -7,12 +7,12 @@ const Menu = () => {
     <Tabs
       mt='40px'
       p='20px'
-      colorScheme='teal' // Cambia el color de las pestañas
+      colorScheme='teal' 
       variant='enclosed'
     >
       <TabList>
         <Tab
-          _selected={{ color: 'white', bg: 'teal.500' }} // Cambia el color cuando está seleccionado
+          _selected={{ color: 'white', bg: 'teal.500' }} 
           width='100px'
           borderRadius='0px'
         >

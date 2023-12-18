@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { useColorMode } from '@chakra-ui/react';
 import Context from '../contexts/context';
 import { Button, Checkbox, Text, Box, Center, Input, Grid, GridItem } from '@chakra-ui/react';
 
@@ -13,12 +14,14 @@ function TaskList() {
     setEditTask
   } = useContext(Context);
 
+  const { colorMode } = useColorMode();
+
   return (
     <Center>
       <Box w='700px'>
         {tasks.map((tarea) => (
           <Box
-            bg='#F8F8F8' 
+            bg={colorMode === 'light' ? '#F8F8F8' : '#2D3748'}
             mt='20px'
             p='10px'
             borderRadius='10px'
