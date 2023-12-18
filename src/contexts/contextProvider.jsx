@@ -1,8 +1,8 @@
 import React from 'react'
-import context from '../contexts/context'
+import Context from './context'
 import UseTask from '../componenst/UseTask'
 
-export default function contextProvider({children}) {
+export default function ContextProvider({children}) {
     const {
         tasks,
         borrarTarea,
@@ -17,7 +17,7 @@ export default function contextProvider({children}) {
 
 
   return (
-    <context.Provider value={{
+    <Context.Provider value={{
         tasks,
         borrarTarea,
         eliminarTodasLasTareas,
@@ -28,6 +28,6 @@ export default function contextProvider({children}) {
         setEditTask
       }}>
         {children}
-    </context.Provider>
+    </Context.Provider>
   )
 }
